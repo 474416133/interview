@@ -7,13 +7,16 @@
 @Date   ：2024/7/10 23:29
 @Desc   ：
 """
+import os
 import pytest
 import q2
 import q1
 
+current_dir = os.path.dirname(__file__)
 
 def load_testcases(filename):
-    with open(f'cases/{filename}', 'r') as rf:
+    full_file_name = os.sep.join([current_dir, 'cases', filename])
+    with open(full_file_name, 'r') as rf:
         for i in rf:
             yield tuple(map(lambda x: x.strip(), i.split(',')))
 
